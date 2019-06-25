@@ -1,0 +1,482 @@
+$azul-header: #001A33;
+$verde-header:  #253;
+$header-height: 20%;
+$content-width: 80%;
+
+$body-bgcolor: #f5f5f5;
+
+$font-topo: "Verdana", "Arial", "Helvetica", sans-serif;
+$sans-serif-families: "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+
+// mensagens
+$error-color: #b94a48;
+$success-color: #468847;
+
+// variáveis do layout do formulário
+$label-bgcolor: #ccc;
+$label-color: #eee;
+$field-bgcolor: #8fb48f;
+$field-width: 80%;
+$access-bgcolor: #ccc;
+
+$button-color: #001A33;
+$button-color-hover: #eee;
+$button-bgcolor: #eee;
+$button-bgcolor-hover: #8fb48f;
+$button-color-visited: #ccc;
+
+* {
+  font-family: $sans-serif-families;
+  font-size: 1em;
+}
+
+body {
+  background-color: $body-bgcolor;
+  color:#222;
+}
+
+@mixin shadow( $color, $x, $y, $radius ) {
+  -moz-box-shadow:    $color, $x, $y, $radius;
+  -webkit-box-shadow: $color, $x, $y, $radius;
+  box-shadow:         $color, $x, $y, $radius;
+}
+
+@mixin border( $radius ) {
+  -moz-border-radius:    $radius;
+  -webkit-border-radius: $radius;
+  border-radius:         $radius;
+}
+
+header {
+  @include shadow(#ccc, 0, 3px, 6px);
+
+  border-bottom: 1px solid #686;
+  margin-bottom: 1%;
+
+  #header-wrap {
+    width: $content-width;
+    margin: 0 auto;
+  }
+
+  height: $header-height;
+  background-color: $azul-header;
+}
+
+header nav {
+  background-color: #ccc;
+  width: 100%;
+}
+
+.page-header {
+  h1 {
+    @include border(10px);
+    background-color: $verde-header;
+    color: #eee;
+    padding: 1%;
+  }
+}
+
+#menu {
+  margin: 0 auto;
+  width: $content-width;
+  ul {
+    display: block;
+    font-family: $font-topo;
+    font-weight: bold;
+  }
+
+  li {
+    display: inline-block;
+    padding: 1% 0;
+    font-size: 1em;
+    a {
+      color: $azul-header;
+      @include border(5px);
+      padding: 5px;
+      &:hover {
+        color: #ccc;
+        background-color: $azul-header;
+      }
+    }
+  }
+}
+
+#content {
+  background-color: #fff;
+  color: $azul-header;
+  text-align: left;
+  width: $content-width;
+  margin: 0 auto;
+  padding: 1%;
+
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 3%;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    margin: 3% 1%;
+    text-align: center;
+  }
+
+  p {
+    display: block;
+    font-size: 1.2em;
+    margin: 1%;
+    padding: 1%;
+  }
+
+  a, a:visited, a:hover {
+    color: #0000FF;
+    text-decoration: underline;
+    &:hover {font-weight: bold; }
+  }
+
+  ul, form, p {
+    margin: 10px 0;
+  }
+}
+
+#navbar {
+  float: right;
+
+  ul {
+    display: block;
+    vertical-align: middle;
+    line-height: 55px;
+  }
+
+  li {
+    display: inline-block;
+    line-height: 24px;
+    background-color: $azul-header;
+    padding: 3px 10px;
+
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    vertical-align: middle;
+
+    a {
+      display: block;
+      font-size: 1em;
+      color: #fff;
+      &:hover {
+        color: #9A9999;
+      }
+      &:visited {
+        color: #ccc;
+      }
+      padding: 1%;
+    }
+  }
+}
+
+#notice {
+  background-color: $success-color;
+  color: #eee;
+  font-weight: bold;
+  padding: 1%;
+  text-decoration: underline;
+}
+
+#alert {
+  background-color: $error-color;
+  color: #eee;
+  font-weight: bold;
+  padding: 1%;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid $error-color;
+  padding: 7px 7px 0;
+  margin: 1%;
+  background-color: #f0f0f0;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 1em;
+    margin: -7px -7px 0;
+    background-color: #c00;
+    color: #fff;
+  }
+
+  ul li {
+    font-size: 1em;
+    font-weight: bold;
+    list-style: none;
+  }
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: $error-color;
+  display: table;
+}
+
+#access {
+  background-color: $access-bgcolor;
+  margin: 0 auto;
+  padding: 1%;
+  width: 98%;
+
+  .field {
+    background-color: $field-bgcolor;
+    color: $label-color;
+    display: block;
+    font-weight: bold;
+    padding: 1%;
+    margin: 1% auto;
+    min-height: 40px;
+    width: 80%;
+    @include border(8px);
+
+    .label {
+      @include border(8px);
+      background-color: $azul-header;
+      float: left;
+      margin: 0.5%;
+      padding: 0.6% 1%;
+      width: 30%;
+    }
+
+    input[type=text], input[type=email], input[type=password] {
+      @include border(8px);
+      color: $azul-header;
+      font-size: 1em;
+      font-weight: bold;
+      float: left;
+      margin: 0 1%;
+      padding: 0.8%;
+      position: relative;
+      top: 0;
+      width: 60%;
+    }
+  }
+
+  .actions {
+    @include border(8px);
+    background-color: $field-bgcolor;
+    margin: 0 auto;
+    padding: 1%;
+    width: 80%;
+
+    input[type=submit] {
+      color: $azul-header;
+      font-weight: bold;
+      padding: 1%;
+    }
+  }
+}
+
+#formulario {
+
+  .field {
+    background-color: $field-bgcolor;
+    color: $azul-header;
+    display: block;
+    font-weight: bold;
+    padding: 1%;
+    margin: 1%;
+    min-height: 40px;
+    width: 96%;
+    @include border(8px);
+
+    .label {
+      background-color: $label-bgcolor;
+      color: $azul-header;
+      display: block;
+      font-weight: bold;
+      float: left;
+      padding: 1%;
+      margin: 0 1%;
+      width: 30%;
+      @include border(8px);
+    }
+
+    input[type=text], input[type=password], textarea {
+      @include border(8px);
+      color: $azul-header;
+      font-size: 1em;
+      font-weight: bold;
+      float: left;
+      margin: 0;
+      padding: 1%;
+      width: 60%;
+    }
+
+    select {
+      @include border(8px);
+      color: $azul-header;
+      font-size: 1em;
+      font-weight: bold;
+      float: left;
+      margin: 0;
+      padding: 0.6%;
+      width: 62%;
+    }
+  }
+
+  .actions {
+    @include border(8px);
+    background-color: #ccc;
+    margin: 0 auto;
+    padding: 1%;
+    width: 96%;
+
+    a {
+      @include border(10px);
+      background-color: $button-bgcolor;
+      color: $button-color;
+      font-weight: bold;
+      margin: 1%;
+      padding: 1%;
+      text-align: center;
+      font-size: 1em;
+      text-decoration: none;
+      &:hover {
+        color: $button-color-hover;
+        background-color: $button-bgcolor-hover;
+      }
+    }
+
+    input[type=submit] {
+      @include border(10px);
+      color: $button-color;
+      font-size: 1em;
+      font-weight: bold;
+      padding: 1%;
+      &:hover {
+        color: $button-color-hover;
+        background-color: $button-bgcolor-hover;
+      }
+      &:visited {
+        color: $button-color-visited;
+      }
+    }
+  }
+}
+
+.button {
+  background-color: $button-bgcolor;
+  color: $button-color;
+  margin: 10px 5px;
+  @include border(10px);
+  font-size: 1em;
+  font-weight: bold;
+  padding: 1%;
+  &:hover {
+    color: $button-color-hover;
+    background-color: $button-bgcolor-hover;
+  }
+}
+
+.links {
+  font-weight: bold;
+  margin: 1%;
+  padding: 1%;
+  text-align: left;
+  a {
+    font-size: 1em;
+    color: #ccc;
+    text-decoration: underline;
+    &:hover {
+      color: #9A9999;
+      text-decoration: none;
+    }
+    &:visited {
+      color: #aaa;
+      text-decoration: underline;
+    }
+  }
+}
+
+.links2 {
+  font-weight: bold;
+  margin: 1%;
+  padding: 1%;
+  text-align: left;
+  a {
+    font-size: 1em;
+    color: #FF0000;
+    text-decoration: underline;
+    &:hover {
+      color: #ff0000;
+      text-decoration: none;
+    }
+    &:visited {
+      color: #aaa;
+      text-decoration: underline;
+    }
+  }
+}
+
+.lista-inscritos {
+  margin: 0;
+  padding: 0;
+  th {
+    @include border(10px);
+    color: #eee;
+    background-color: $verde-header;
+    padding: 3px 5px;
+    text-align: center;
+  }
+  td {
+    background-color: #ccc;
+    color: $azul-header;
+    font-weight: bold;
+    padding: 3px;
+    text-align: center;
+  }
+}
+
+.dados-inscrito {
+  dt {
+    @include border(8px);
+    background-color: $azul-header;
+    color: #eee;
+    display: inline-block;
+    font-weight: bold;
+    margin: 0.5% 1%;
+    padding: 1%;
+    width: 30%;
+  }
+  dd {
+    @include border(8px);
+    background-color: $verde-header;
+    color: #eee;
+    display: inline-block;
+    font-weight: bold;
+    padding: 1%;
+    margin: 0.5% 1%;
+    width: 60%;
+  }
+}
+
+.footer-nav {
+  @include border(8px);
+  background-color: #ccc;
+  padding: 2%;
+  width: 94%;
+}
+
+#rodape {
+  background: none repeat scroll 0 0 #9A9999;
+  clear: both;
+  color: #ffffff;
+  display: block;
+  font: 0.75em/1.4em Verdana,Arial,Helvetica,sans-serif;
+  margin: 0;
+  overflow: hidden;
+  padding: 2% 0 1% 0;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 10px;
+}
